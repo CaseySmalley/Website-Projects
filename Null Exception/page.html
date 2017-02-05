@@ -1,0 +1,148 @@
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=windows-1252">
+</head>
+<body onresize="resize()" bgcolor="#000000">
+<form id="form1" style="position:relative">
+	<img src="resource/wing.png" style="position:absolute; top:0px; left:0%; width:25%; height:98.2vh;">
+	<img src="resource/wing.png" style="position:absolute; top:0px; left:75%; width:25%; height:98.2vh;">
+	<div id="background_div" style="position:absolute; top:0px; left:25%; z-index:2">
+		<canvas width="0" height="0" id="background_canvas"> No Support </canvas>
+	</div>
+	<div id="entities_div" style="position:absolute; top:0px; left:25%; z-index:3">
+		<canvas width="0" height="0" id="entities_canvas"> No Support </canvas>
+		<canvas width="0" height="0" id="entities_buffer" style="display:none"> No Support </canvas>
+	</div>
+	<div id="interface_div" style="position:absolute; top:0px; left:25%; z-index:4">
+		<canvas width="0" height="0" id="interface_canvas"> No Support </canvas>
+		<canvas width="0" height="0" id="interface_buffer" style="display:none"> No Support </canvas>
+	</div>
+	<div id="projectiles_div" style="position:absolute; top:0px; left:25%; z-index:5">
+		<canvas width="0" height="0" id="projectiles_canvas"> No Support </canvas>
+		<canvas width="0" height="0" id="projectiles_buffer" style="display:none"> No Support </canvas>
+	</div>
+	<div id="panel_div" style="position:absolute; top:0px; left:25%; z-index:6">
+		<canvas width="0" height="0" id="panel_canvas"> No Support </canvas>
+	</div>
+</form>
+	<p id="tileMap_Width">34</p>
+	<p id="tileMap_Height">36</p>
+	<p id="tileMap" style="display:none">
+	3 3 3 3 3 3 3 3 1 1 1 1 1 1 1 1 1 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3/n
+	3 3 3 3 3 3 3 3 1 0 0 0 0 0 0 0 1 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3/n
+	3 3 3 3 3 3 3 3 1 0 2 0 0 0 2 0 1 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3/n
+	3 3 3 3 3 3 3 3 1 0 3 0 0 0 3 0 1 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3/n
+	3 3 3 3 3 3 3 3 1 0 9 0 0 0 9 0 1 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3/n
+	3 3 3 3 3 3 3 3 1 0 0 0 0 0 0 0 1 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3/n
+	3 3 3 3 3 3 3 3 1 0 2 0 0 0 2 0 1 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3/n
+	3 3 3 3 3 3 3 3 1 0 3 0 0 0 3 0 1 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3/n
+	3 3 3 3 3 3 3 3 1 0 9 0 0 0 9 0 1 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3/n
+	3 3 3 3 3 3 3 3 1 0 0 0 0 0 0 0 1 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3/n
+	3 3 3 3 3 3 3 3 1 0 2 0 0 0 2 0 1 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3/n
+	3 3 3 3 3 3 3 3 1 0 3 0 0 0 3 0 1 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3/n
+	3 3 3 3 3 3 3 3 1 0 9 0 0 0 9 0 1 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3/n
+	3 3 3 3 3 3 3 3 1 0 0 0 0 0 0 0 1 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3/n
+	3 3 3 3 3 3 3 3 2 2 2 2 0 2 2 2 2 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3/n
+	3 3 3 3 3 3 3 3 3 3 3 3 0 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3/n
+	1 1 1 1 1 1 1 1 1 3 3 3 0 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3/n
+	1 0 0 0 0 0 0 0 1 3 3 3 0 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3/n
+	1 0 0 0 0 0 0 0 1 9 9 9 0 9 9 9 9 9 9 9 9 9 9 3 3 3 3 3 3 3 3 3 3 3/n
+	1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 3 3 3 3 3 3 3 3 3 3 3/n
+	1 0 0 0 0 0 0 0 1 2 2 2 2 2 2 2 2 2 2 2 1 0 1 3 3 3 3 3 3 3 3 3 3 3/n
+	1 0 0 0 0 0 0 0 1 3 3 3 3 3 3 3 3 3 3 3 1 0 1 3 3 3 3 3 3 3 3 3 3 3/n
+	2 2 2 2 2 2 2 2 2 3 3 3 3 3 3 3 3 1 1 1 1 0 1 1 1 1 3 3 3 3 3 3 3 3/n
+	3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 1 0 0 0 0 0 0 0 1 3 3 3 3 3 3 3 3/n
+	3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 1 0 0 0 0 0 0 0 1 3 3 3 3 3 3 3 3/n
+	3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 1 0 0 0 0 0 0 0 1 3 3 3 3 3 3 3 3/n
+	3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 1 0 0 0 0 0 0 0 1 3 3 3 3 3 3 3 3/n
+	3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 1 0 0 0 0 0 0 0 1 3 3 3 3 3 3 3 3/n
+	3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 1 0 0 0 0 0 0 0 1 3 3 3 3 3 3 3 3/n
+	3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 1 0 0 0 0 0 0 0 1 3 3 3 3 3 3 3 3/n
+	3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 2 2 2 1 0 1 2 2 2 3 3 3 3 3 3 3 3/n
+	3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 1 0 1 3 3 3 3 9 9 9 9 9 9 9/n
+	3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 1 0 1 9 9 9 9 1 0 0 0 0 0 1/n
+	3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 1 0 0 0 0 0 0 0 0 0 0 0 0 1/n
+	3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 2 2 2 2 2 2 2 1 0 0 0 0 0 1/n
+	3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 2 2 2 2 2 2 2
+	</p>
+	<img src="resource/panel.png" id="panel" style="display:none"></img>
+	<img src="resource/overlay.png" id="overlay" style="display:none"></img>
+	<img src="resource/interface.png" id="interface" style="display:none"></img>
+	<img src="resource/head_frame_0.png" id="head_frame_0" style="display:none"></img>
+	<img src="resource/head_frame_1.png" id="head_frame_1" style="display:none"></img>
+	<img src="resource/head_frame_2.png" id="head_frame_2" style="display:none"></img>
+	<img src="resource/head_frame_1.png" id="head_frame_3" style="display:none"></img>
+	<img src="resource/head_pain.png" id="head_frame_4" style="display:none"></img>
+	<img src="resource/head_death.png" id="head_frame_5" style="display:none"></img>
+	<img src="resource/torso.png" id="torso" style="display:none"></img>
+	<img src="resource/legs.png" id="legs" style="display:none"></img>
+	<img src="resource/decim_head_frame_0.png" id="decim_head_frame_0" style="display:none"></img>
+	<img src="resource/decim_head_frame_1.png" id="decim_head_frame_1" style="display:none"></img>
+	<img src="resource/decim_head_frame_2.png" id="decim_head_frame_2" style="display:none"></img>
+	<img src="resource/decim_head_frame_1.png" id="decim_head_frame_3" style="display:none"></img>
+	<img src="resource/decim_head_pain.png" id="decim_head_frame_4" style="display:none"></img>
+	<img src="resource/decim_head_down.png" id="decim_head_frame_5" style="display:none"></img>
+	<img src="resource/decim_head_glow.png" id="decim_head_frame_6" style="display:none"></img>
+	<img src="resource/decim_torso.png" id="decim_torso" style="display:none"></img>
+	<img src="resource/decim_legs.png" id="decim_legs" style="display:none"></img>
+	<img src="resource/decimblaster.png" id="DecimBlaster" style="display:none"></img>
+	<img src="resource/menuBackground.png" id="menuBackground" style="display:none"></img>
+	<img src="resource/menuOverlay.png" id="menuOverlay" style="display:none"></img>
+	<img src="resource/menuShip.png" id="menuShip" style="display:none"></img>
+	<img src="resource/menuGameOver.png" id="menuGameOver" style="display:none"></img>
+	<img src="resource/overworld/player_idle.png" id="player_idle" style="display:none"></img>
+	<img src="resource/overworld/player_frame_0.png" id="player_frame_0" style="display:none"></img>
+	<img src="resource/overworld/player_frame_1.png" id="player_frame_1" style="display:none"></img>
+	<img src="resource/overworld/player_frame_2.png" id="player_frame_2" style="display:none"></img>
+	<img src="resource/overworld/player_frame_3.png" id="player_frame_3" style="display:none"></img>
+	<img src="resource/overworld/player_frame_4.png" id="player_frame_4" style="display:none"></img>
+	<img src="resource/overworld/player_frame_5.png" id="player_frame_5" style="display:none"></img>
+	<img src="resource/overworld/player_idle_left.png" id="player_idle_left" style="display:none"></img>
+	<img src="resource/overworld/player_frame_0_left.png" id="player_frame_0_left" style="display:none"></img>
+	<img src="resource/overworld/player_frame_1_left.png" id="player_frame_1_left" style="display:none"></img>
+	<img src="resource/overworld/player_frame_2_left.png" id="player_frame_2_left" style="display:none"></img>
+	<img src="resource/overworld/player_frame_3_left.png" id="player_frame_3_left" style="display:none"></img>
+	<img src="resource/overworld/player_frame_4_left.png" id="player_frame_4_left" style="display:none"></img>
+	<img src="resource/overworld/player_frame_5_left.png" id="player_frame_5_left" style="display:none"></img>
+	<img src="resource/overworld/ground.png" id="overworld_ground" style="display:none"></img>
+	<img src="resource/overworld/higherground.png" id="overworld_highground" style="display:none"></img>
+	<img src="resource/overworld/higherground_left.png" id="overworld_highground_left" style="display:none"></img>
+	<img src="resource/overworld/higherground_right.png" id="overworld_highground_right" style="display:none"></img>
+	<img src="resource/overworld/higherground_top.png" id="overworld_highground_top" style="display:none"></img>
+	<img src="resource/overworld/higherground_middle.png" id="overworld_highground_middle" style="display:none"></img>
+	<img src="resource/overworld/Wall.png" id="overworld_wall" style="display:none"></img>
+	<img src="resource/overworld/highWall.png" id="overworld_wall_high" style="display:none"></img>
+	<img src="resource/overworld/Wall_top.png" id="overworld_wall_top" style="display:none"></img>
+	<img src="resource/overworld/LowerWall.png" id="overworld_lowerwall" style="display:none"></img>
+	<img src="resource/overworld/Futura.png" id="overworld_futura" style="display:none"></img>
+	<img src="resource/overworld/Decim.png" id="overworld_decim" style="display:none"></img>
+	<img src="resource/overworld/FuturaNeutral.png" id="overworld_futura_neutral" style="display:none"></img>
+	<img src="resource/overworld/FuturaSide.png" id="overworld_futura_side" style="display:none"></img>
+	<img src="resource/overworld/FuturaDismissive.png" id="overworld_futura_dismissive" style="display:none"></img>
+	<img src="resource/overworld/FuturaAnnoyed.png" id="overworld_futura_annoyed" style="display:none"></img>
+	<img src="resource/overworld/FuturaFear.png" id="overworld_futura_fear" style="display:none"></img>
+	<img src="resource/overworld/FuturaPetrified.png" id="overworld_futura_petrified" style="display:none"></img>
+	<img src="resource/overworld/DecimNeutral.png" id="overworld_decim_neutral" style="display:none"></img>
+	<img src="resource/overworld/DecimDismissive.png" id="overworld_decim_dismissive" style="display:none"></img>
+	<img src="resource/overworld/DecimAngry.png" id="overworld_decim_angry" style="display:none"></img>
+	<img src="resource/overworld/DecimFear.png" id="overworld_decim_fear" style="display:none"></img>
+	<audio src="resource/overworld/ambience.mp3" id="overworldAmbienceAudio"/>
+	<audio src="resource/overworld/futura_blip.wav" id="futuraBlipAudio"/>
+	<audio src="resource/overworld/futura_blip_angry.wav" id="futuraBlipAngryAudio"/>
+	<audio src="resource/overworld/decim_blip.wav" id="decimBlipAudio"/>
+	<audio src="resource/overworld/decim_blip_angry.wav" id="decimBlipAngryAudio"/>
+	<audio src="resource/blaster.wav" id="blasterAudio"/>
+	<audio src="resource/medkit.wav" id="medkitAudio"/>
+	<audio src="resource/hit.wav" id="hitAudio"/>
+	<audio src="resource/enemy_weaken.mp3" id="weakenAudio"/>
+	<audio src="resource/panel.wav" id="panelAudio"/>
+	<audio src="resource/Last Dance In the Psychomanteum.mp3" id="futuraTheme"/>
+	<audio src="resource/Interstellar Retribrution pt1.mp3" id="interstellarretribrutionpt1"/>
+	<audio src="resource/Interstellar Retribrution pt2.mp3" id="interstellarretribrutionpt2"/>
+	<audio src="resource/Interstellar Retribrution pt3.mp3" id="interstellarretribrutionpt3"/>
+	<script src="resource/Overworld.js"></script>
+	<script src="resource/Futura_Fight.js"></script>
+	<script src="resource/Decim_Fight.js"></script>
+	<script src="resource/Main.js"></script>
+</body>
+</html>
