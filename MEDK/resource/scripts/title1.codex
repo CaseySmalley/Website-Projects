@@ -1,0 +1,29 @@
+console setlog false
+console playmusic skull.au
+level addentity light 2176 960 light2
+light2 setparent cam2
+level setbgcolor 50 0 0
+level setrendertarget light
+cam1 setmaxspeed 3
+cam2 setmaxspeed 3
+light setparent cam2
+cam1 setright true
+cam2 setright true
+cam2 setcontrols false
+console addscript title1_platform.codex
+wait 1000
+cam2 setname By the way where are we going?
+wait 1500
+cam2 setname 
+wait 1000
+cam1 setname the mile high club
+wait 1500
+cam1 setname 
+wait 1000
+cam2 setname oh ok
+wait 1500
+cam2 setname 
+wait 1000
+cam2 setname wait what?
+wait 1500
+cam2 setname 

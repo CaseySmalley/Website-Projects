@@ -1,0 +1,6 @@
+activator setleft false
+activator setright false
+activator setcontrols false
+level addentity tnt 380 300 bomb
+wait 2000
+bomb kill

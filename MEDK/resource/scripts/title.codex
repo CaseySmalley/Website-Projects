@@ -1,0 +1,7 @@
+level setweathertype snow
+level setweather true
+level setbgcolor 120 100 100
+level addentity light 1920 1380 camera
+console setlog false
+console setrendertarget camera
+console playmusic storm.au

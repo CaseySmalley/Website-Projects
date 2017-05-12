@@ -1,0 +1,2 @@
+level addentity tnt 500 500 t
+t setparent activator

@@ -1,0 +1,4 @@
+level settile 7 18 0110 
+level settile 11 18 0110
+wait 1000
+activator kill

@@ -1,0 +1,5 @@
+level addentity enemy 500 500 sonic
+sonic sethelath 10
+sonic setname sonic
+sonic settarget player
+console playmusic skull.au

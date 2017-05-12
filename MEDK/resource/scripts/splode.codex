@@ -1,0 +1,4 @@
+level setweathertype snow
+level setweather true
+level addentity tnt 500 500 tnt
+tnt sethostile true

@@ -1,0 +1,8 @@
+console playmusic stormpiano.au
+console setlog false
+level setlighting true
+level settime night
+level setweathertype rain
+level setweather true
+level addentity light 1977 767 camera
+level setrendertarget camera

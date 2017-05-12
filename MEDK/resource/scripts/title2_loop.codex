@@ -1,0 +1,22 @@
+activator setpos 1088 100
+activator setalpha false
+level addentity human 1388 1442 h
+level addentity human 1588 1442 h2
+level addentity human 1788 1442 h3
+level addentity human 1988 1442 h4
+level addentity human 2188 1442 h5
+level addentity human 2388 1442 h6
+level addentity human 2588 1442 h7
+h kill
+wait 400
+h2 kill
+wait 400
+h3 kill
+wait 400
+h4 kill
+wait 400
+h5 kill
+wait 400
+h6 kill
+wait 400
+h7 kill

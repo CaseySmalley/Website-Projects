@@ -1,0 +1,2 @@
+level addentity light 0 0 bob
+bob setparent player
